@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 
 var globalurl = "http://pohaindorinamkeen.com/webservice";
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers','ngIOS9UIWebViewPatch','ngCordova','starter.services'])
 
 
 
@@ -31,71 +31,22 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     url: '/about',
     templateUrl: 'templates/about.html'
   })
-  // View category
-  .state('category', {
-    url: '/category/:category_id',
-    templateUrl: 'templates/category.html',
-    controller: 'CategoryCtrl'
-  })
-
-  // Product detail
-  .state('detail', {
-    url: '/detail/:product_id',
-    templateUrl: 'templates/detail.html',
-    controller: 'DetailCtrl'
-  })
-
-  // Cart detail
-  .state('cart', {
-    url: '/cart',
-    templateUrl: 'templates/cart.html',
-    controller: 'CartCtrl'
-  })
-
-  // Checkout steps
-  // Address
-  .state('checkout', {
-    url: '/checkout',
-    templateUrl: 'templates/checkout.html',
-    controller: 'CheckoutCtrl'
-  })
 	
-  // History
-  .state('history', {
-    url: '/history',
-    templateUrl: 'templates/orderhistory.html',
-    controller: 'HistoryCtrl'
-  })
-	
-	// user screen
-	.state('changepassword', {
-		url: '/changepassword',
-		templateUrl: 'templates/changepassword.html',
-		controller: 'setting'
-  	})
-  
-  	.state('setting', {
-		url: '/setting',
-		templateUrl: 'templates/setting.html',
-		controller: 'setting'
-  	})
-	
-
-   // login screen
+	// login screen
   .state('login', {
     url: '/login',
     templateUrl: 'templates/login.html',
     controller: 'AuthCtrl'
   })
+  
+   // login screen
+  .state('contact', {
+    url: '/contact',
+	 templateUrl: 'templates/contact.html',
+    controller: 'ContactCtrl'
+  })
 
-  // register screen
-  .state('register', {
-    url: '/register',
-    templateUrl: 'templates/register.html',
-    controller: 'AuthCtrl'
-  });
-
-  // if none of the above states are matched, use this as the fallback
+ // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/home');
 
 })

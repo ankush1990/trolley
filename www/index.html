@@ -12,7 +12,9 @@
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
     <!-- cordova script (this will be a 404 during development) -->
+    <script src="js/ng-cordova.min.js"></script>
     <script src="cordova.js"></script>
+    <script src="js/angular-ios9-uiwebview.patch.js"></script>
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
@@ -74,8 +76,8 @@
 		  <a ui-sref="login" class="item item-icon-left" menu-close>DRIVER SIGNIN</a>
 		  <a ui-sref="category" class="item item-icon-left" menu-close>TICKETING WEBSITE</a>
 		  <a ui-sref="category" class="item item-icon-left" menu-close>BROCHURE</a>
-		  <a ui-sref="category" class="item item-icon-left" menu-close >VINEYARD TOURS</a>
-		  <a ui-sref="category" class="item item-icon-left" menu-close>CONTACT US</a>
+		  <a ui-sref="vineyard" class="item item-icon-left" ng-click="showwebsitelink('http://www.ellijaytrolley.com/vineyardtours')" menu-close >VINEYARD TOURS</a>
+		  <a ui-sref="contact" class="item item-icon-left" ng-click="showwebsitelink('http://www.ellijaytrolley.com/contact/')" menu-close>CONTACT US</a>
 		</ul>
         
       </ion-content>
