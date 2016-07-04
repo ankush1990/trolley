@@ -1,0 +1,44 @@
+    <ion-view view-title="Checkcout">
+		<ion-nav-buttons side="secondary">
+		<!--<a class="button button-icon icon ion-ios-search-strong" href="#/app/search">
+		</a>-->
+		</ion-nav-buttons>
+       <ion-content>
+			<div class="list">
+				<div class="item item-divider assertive">
+		<i class="icon ion-card"></i> Pay
+	</div>
+	<div class="row item-icon-right">
+	
+	<div class="col">
+		<label class="item item-radio">
+    <input type="radio" name="group">
+    <div class="radio-content">
+      <div class="item-content">
+        <i class="icon ion-cash"></i> Cash on delivery
+      </div>
+      <i class="radio-icon ion-checkmark"></i>
+    </div>
+		</label>
+	</div>	
+	
+	</div>	
+		<div class="item item-divider assertive">
+		<i class="icon ion-paper-airplane"></i> Detail
+		</div>
+        <label class="item item-input item-floating-label">
+            <span class="input-label">Name</span>
+            <input type="text" placeholder="Full Name">
+        </label>
+        <label class="item item-input item-floating-label">
+            <span class="input-label">Addres</span>
+            <input type="text" placeholder="Full Addres">
+        </label>
+			</div>
+       </ion-content>
+	 <ngcart-checkout class="bar bar-footer bar-assertive" service="http" settings="{ url:'#/checkout-finish' }">
+		<div class="title"> 
+			Place Order
+		</div>
+	</ngcart-checkout>
+    </ion-view>

@@ -1,0 +1,11 @@
+<div ng-hide="attrs.id">
+    <a class="button button-assertive" ng-disabled="true" ng-transclude></a>
+</div>
+<div ng-show="attrs.id">
+		<div class="custom-button">
+			<a class="button button-assertive button-full" ng-click="ngCart.addItem(id, name, price, q, data)"  ng-transclude></a>
+		</div>
+	<!--<span  ng-show="inCart()">
+       <a ng-click="ngCart.removeItemById(id)" style="cursor: pointer;">Remove</a>
+    </span>-->
+</div>

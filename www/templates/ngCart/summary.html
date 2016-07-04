@@ -1,0 +1,5 @@
+		<a class="button button-icon icon ion-ios-cart-outline" menu-close href="#/cart">
+		{{ ngCart.getTotalItems() }}<!--{{ ngCart.totalCost() | currency }} --></a>
+        <ng-pluralize count="ngCart.getTotalItems()" when="{1: '', 'other':''}"></ng-pluralize>
+       
+    
