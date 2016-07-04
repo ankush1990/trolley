@@ -6550,7 +6550,8 @@ button.item.item-button-right {
   padding-top: 1px;
   padding-bottom: 1px;
   padding-left: 0;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  margin-top:-20px; }
 
 .list:last-child {
   margin-bottom: 0px; }
@@ -9835,6 +9836,7 @@ a {
 .dark-list .item {
   background: none;
   border-color: #2F313E;
+  height:10px;
   color: #f8f8f8; }
   .dark-list .item.item-divider {
     background: #1D1C22; }

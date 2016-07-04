@@ -31,7 +31,7 @@ angular.module('starter.controllers', [])
 })
 
 // Home controller
-.controller('ContactCtrl', function($scope,$ionicLoading) {
+.controller('WebCtrl', function($scope,$ionicLoading) {
   // slider images
   	$scope.showwebsitelink = function(url){
 		//console.log(url);

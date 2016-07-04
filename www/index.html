@@ -23,7 +23,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB16sGmIekuGIvYOfNoW9T44377IU2d2Es"></script>
   </head>
   <body ng-app="starter" class="platform-android platform-cordova platform-webview">
-  <ion-side-menus>
+ <ion-side-menus>
 
     <!-- Center content -->
     <ion-side-menu-content>
@@ -52,7 +52,7 @@
     <!-- Left menu -->
     <ion-side-menu side="left" class="dark-bg">
       <ion-header-bar class="bar-positive">
-        <div class="text-center" style="width:260px !important;">
+         <div class="text-center" style="width:260px !important;">
         <img src="img/logo.png" height="75px" width="150px;" style="margin-bottom:20px;"><br>
         706-972-1884<br>
         www.EllijayTrolley.com
@@ -70,17 +70,31 @@
         </ion-header-bar>-->
 
         <!-- Menu -->
-        <ul class="list" style="margin-top:-30px !important;">
-		  <!-- Note each link has the 'menu-close' attribute so the menu auto closes when clicking on one of these links -->
-		  <a ui-sref="category" class="item item-icon-left" menu-close>SCHEDULE</a>
-		  <a ui-sref="login" class="item item-icon-left" menu-close>DRIVER SIGNIN</a>
-		  <a class="item item-icon-left" ng-controller="WebCtrl" ng-click="showwebsitelink('http://www.ellijaytrolley.com/Purch
-aseTickets')" menu-close>TICKETING WEBSITE</a>
-		  <a class="item item-icon-left"  ng-controller="WebCtrl" ng-click="showwebsitelink('http://static1.squarespace.com/static/56990ed9fb36b1a2d2c68757/t/575a3b458259b54fad3324b9/1465531234837/TrolleyDepot-Stops-Flyer-Final.pdf')" menu-close>BROCHURE</a>
-		  <a class="item item-icon-left" ng-controller="WebCtrl" ng-click="showwebsitelink('http://www.ellijaytrolley.com/vineyardtours')" menu-close >VINEYARD TOURS</a>
-		  <a class="item item-icon-left" ng-controller="WebCtrl" ng-click="showwebsitelink('http://www.ellijaytrolley.com/contact/')" menu-close>CONTACT US</a>
-		</ul>
-        
+        <div class="list dark-list stable" menu-close="">
+         
+          <div class="item" ui-sref="login">
+              SCHEDULE
+          </div>
+          <div class="item" ui-sref="login">
+              DRIVER SIGNIN
+          </div>
+          <div class="item" ng-controller="WebCtrl" ng-click="showwebsitelink('http://www.ellijaytrolley.com/Purch
+aseTickets')">
+              TICKETING WEBSITE
+          </div>
+          <div class="item" ng-controller="WebCtrl" ng-click="showwebsitelink('http://static1.squarespace.com/static/56990ed9fb36b1a2d2c68757/t/575a3b458259b54fad3324b9/1465531234837/TrolleyDepot-Stops-Flyer-Final.pdf')">
+              BROCHURE
+          </div>
+          
+          <div class="item" ng-controller="WebCtrl" ng-click="showwebsitelink('http://www.ellijaytrolley.com/vineyardtours')">
+            VINEYARD TOURS
+          </div>
+          
+          <div class="item" ng-controller="WebCtrl" ng-click="showwebsitelink('http://www.ellijaytrolley.com/contact/')">
+            CONTACT US
+          </div>
+        </div>
+
       </ion-content>
 
     </ion-side-menu>
