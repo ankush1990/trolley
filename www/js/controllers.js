@@ -34,8 +34,67 @@ angular.module('starter.controllers', [])
 .controller('ContactCtrl', function($scope,$ionicLoading) {
   // slider images
   	$scope.showwebsitelink = function(url){
+		//console.log(url);
 		var ref = window.open(url,'_blank','location=no'); 
 		return false;
 	}
 })
+
+// Authentication controller
+// Put your login, register functions here
+.controller('AuthCtrl', function($scope,$ionicHistory,$rootScope,$http,$ionicPopup,$state) {
+	$scope.user = {username: '',password : ''};
+    // hide back butotn in next view
+	$ionicHistory.nextViewOptions({
+      	disableBack: true
+    });
+	
+	
+   	$scope.signIn = function(user) {
+		var username = user.username;
+		var password = user.password;
+		
+		
+		if(typeof username === "undefined" || typeof password === "undefined" || username == "" || password == ""){
+			$ionicPopup.show({
+			  template: '',
+			  title: 'Please fill all fields',
+			  scope: $scope,
+			  buttons: [
+				{ 
+				  text: 'Ok',
+				  type: 'button-assertive'
+				},
+			  ]
+			})
+		}
+		else{
+			var action = "login";
+			var data_parameters = "action="+action+"&username="+username+ "&password="+password;
+			$http.post(globalurl,data_parameters, {
+				headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
+			})
+			.success(function(response) {
+				if(response[0].status == "Y"){
+					$rootScope.$broadcast('login_var',{global_login:response[0].result.user_id});
+					$state.go('home');
+				}
+				else{
+					$ionicPopup.show({
+					  template: '',
+					  title: 'Username or password is wrong',
+					  scope: $scope,
+					  buttons: [
+						{
+						  text: 'Ok',
+						  type: 'button-assertive'
+						},
+					  ]
+					})
+				}
+			});
+		}
+	};
+});
+
 

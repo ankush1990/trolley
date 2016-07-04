@@ -39,12 +39,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngIOS9UIWebViewPatch'
     controller: 'AuthCtrl'
   })
   
-   // login screen
-  .state('contact', {
-    url: '/contact',
-	 templateUrl: 'templates/contact.html',
-    controller: 'ContactCtrl'
-  })
+  
 
  // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/home');
