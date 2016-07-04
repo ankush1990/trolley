@@ -6551,7 +6551,7 @@ button.item.item-button-right {
   padding-bottom: 1px;
   padding-left: 0;
   margin-bottom: 20px;
-  margin-top:-20px; }
+  margin-top:-44px; }
 
 .list:last-child {
   margin-bottom: 0px; }
@@ -10029,3 +10029,21 @@ map {
   height: 100%;
 }
 
+.customitem{
+	background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+	border-color: #2f313e !important;
+	color: #000 !important;
+	border-color: #ddd;
+	border-style: solid;
+	border-width: 1px;
+	display: block;
+	font-size: 16px;
+	
+	padding: 16px !important;
+	position: relative;
+	z-index: 2;
+}
+
+.customlist{
+	margin-top:-44px !important;
+}

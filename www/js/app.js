@@ -31,7 +31,14 @@ angular.module('starter', ['ionic', 'starter.controllers','ngIOS9UIWebViewPatch'
     url: '/about',
     templateUrl: 'templates/about.html'
   })
-	
+  
+  // about screen
+  .state('schedule', {
+    url: '/schedule',
+    templateUrl: 'templates/schedule.html',
+	controller: 'ScheduleCtrl'
+  })
+
 	// login screen
   .state('login', {
     url: '/login',

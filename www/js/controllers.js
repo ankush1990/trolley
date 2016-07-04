@@ -35,9 +35,17 @@ angular.module('starter.controllers', [])
   // slider images
   	$scope.showwebsitelink = function(url){
 		//console.log(url);
+		//var ref = window.open(url,'_blank','location=no'); 
 		var ref = window.open(url,'_blank','location=no'); 
 		return false;
 	}
+})
+
+.controller('ScheduleCtrl', function($scope,$ionicLoading) {
+  	var data = [{"name": "The Trolley Depot [Park and Ride]"},{"name": "Mister Ps Restaurant"}];
+	
+
+  	$scope.response = data;
 })
 
 // Authentication controller
