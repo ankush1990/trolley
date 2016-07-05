@@ -68,7 +68,7 @@ angular.module('starter.controllers', [])
 					if(response.result != "unsuccessful"){
 						$ionicPopup.show({
 						  template: '',
-						  title: global_location,
+						  title: "success",
 						  scope: $scope,
 						  buttons: [
 							{ 
