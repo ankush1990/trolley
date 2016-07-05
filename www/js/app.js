@@ -1,6 +1,6 @@
 // JavaScript Document
 //var globalip = "www.truhome.co/phonegapservices";
-var globalip = "45.79.145.23/truhome.co/public_html/phonegapservices";
+var globalip = "http://maestrosinfotech.com/WEBINC/ellijay_trolley/process.php?";
 var token = "";
 angular.module('ionicApp', ['ionic','ionic.rating','ngCordova','ngIOS9UIWebViewPatch','starter.controllers'])
 .config(function($stateProvider, $urlRouterProvider) {

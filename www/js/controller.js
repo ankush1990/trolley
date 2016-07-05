@@ -1,6 +1,5 @@
 // JavaScript Document
-var lat = "";
-var long = "";
+var global_location = "";
 
 angular.module('starter.controllers', [])
 .controller('MainCtrl', function($scope, $ionicSideMenuDelegate,$rootScope,$state) {
@@ -11,34 +10,32 @@ angular.module('starter.controllers', [])
     { firstname: 'Steven', lastname: 'Seagal' }
   ];
   
-  var check_login =  localStorage.getItem("checklogin");
-  globalusertype = localStorage.getItem("usertype");
-  globaluserid = localStorage.getItem("userid");
-  slocid = localStorage.getItem("slocid");
-  orgid = localStorage.getItem("orgid");
-  
-  if(globaluserid == "")localStorage.setItem("userid","");
- 
-  if(check_login == "set"){
-  	$rootScope.control = {showLogin:false,showAccount:true,showLogout:true};
-	$state.go('eventmenu.checkin');
-  }else{
-	$rootScope.control = {showLogin: true,showAccount:false,showLogout:false}; 
-	$state.go('eventmenu.checkin');
-  }
-  	
-  
   $scope.toggleLeft = function() {
     $ionicSideMenuDelegate.toggleLeft();
   };
 })
 
 
-.controller('driverCtrl', function($scope,$ionicPopup) {
+.controller('driverCtrl', function($scope,$ionicPopup,$http) {
 	
+	// to get location name code
   	navigator.geolocation.getCurrentPosition(function (pos) {
-		 lat = pos.coords.latitude;
-		 long = pos.coords.longitude;
+		 var lat = pos.coords.latitude;
+		 var long = pos.coords.longitude;
+		 var geocoder = new google.maps.Geocoder();
+		 var latlng = new google.maps.LatLng(lat, long);
+
+			geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+				if (status == google.maps.GeocoderStatus.OK) {
+					if (results[1]) {
+						global_location = results[1].formatted_address; // details address
+					} else {
+						console.log('Location not found');
+					}
+				} else {
+					console.log('Geocoder failed due to: ' + status);
+				}
+			})
 	}, function (error) {
 		  alert('Unable to get location: ' + error.message);
 	});
@@ -46,9 +43,11 @@ angular.module('starter.controllers', [])
 	$scope.login = function(user){
 		var email = user.email;
 		var password = user.password;
-		$ionicPopup.show({
+		var action = "login";
+		if(typeof email === "undefined" || typeof password === "undefined" || email == "" || password == ""){
+			$ionicPopup.show({
 			  template: '',
-			  title: email+' '+lat,
+			  title: 'Please fill all fields',
 			  scope: $scope,
 			  buttons: [
 				{ 
@@ -57,8 +56,58 @@ angular.module('starter.controllers', [])
 				},
 			  ]
 			})
+		}
+		else{
+			var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z\-])+\.)+([a-zA-Z]{2,4})+$/;
+			if(filter.test(email)){
+				var data_parameters = "email="+email+ "&password="+password+ "&location="+global_location+ "&action="+action;
+				$http.post(globalip,data_parameters, {
+					headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
+				})
+				.success(function(response) {
+					if(response.result != "unsuccessful"){
+						$ionicPopup.show({
+						  template: '',
+						  title: global_location,
+						  scope: $scope,
+						  buttons: [
+							{ 
+							  text: 'Ok',
+							  type: 'button-assertive'
+							},
+						  ]
+						})
+					}
+					else{
+						$ionicPopup.show({
+						  template: '',
+						  title: "Wrong email or password",
+						  scope: $scope,
+						  buttons: [
+							{ 
+							  text: 'Ok',
+							  type: 'button-assertive'
+							},
+						  ]
+						})
+					}
+				});
+			}
+			else{
+				$ionicPopup.show({
+				  template: '',
+				  title: "Enter Valid email",
+				  scope: $scope,
+				  buttons: [
+					{ 
+					  text: 'Ok',
+					  type: 'button-assertive'
+					},
+				  ]
+				})
+			}
+		}
 	}
-	
 })
 
 .controller('WebCtrl', function($scope,$ionicLoading) {
@@ -106,13 +155,6 @@ angular.module('starter.controllers', [])
 
 
 .controller('CheckinCtrl', function($scope,$cordovaGeolocation,$ionicPopup) {
-	
-	navigator.geolocation.getCurrentPosition(function (pos) {
-		 lat = pos.coords.latitude;
-		 long = pos.coords.longitude;
-	}, function (error) {
-		  alert('Unable to get location: ' + error.message);
-	});
 	
 	$scope.mapCreated = function(map) {
 		$scope.map = map;
