@@ -1,8 +1,7 @@
 // JavaScript Document
-var globalusertype = "";
-var globaluserid = "";
-var slocid = "";
-var orgid = "";
+var lat = "";
+var long = "";
+
 angular.module('starter.controllers', [])
 .controller('MainCtrl', function($scope, $ionicSideMenuDelegate,$rootScope,$state) {
   $scope.attendees = [
@@ -35,6 +34,33 @@ angular.module('starter.controllers', [])
 })
 
 
+.controller('driverCtrl', function($scope,$ionicPopup) {
+	
+  	navigator.geolocation.getCurrentPosition(function (pos) {
+		 lat = pos.coords.latitude;
+		 long = pos.coords.longitude;
+	}, function (error) {
+		  alert('Unable to get location: ' + error.message);
+	});
+	
+	$scope.login = function(user){
+		var email = user.email;
+		var password = user.password;
+		$ionicPopup.show({
+			  template: '',
+			  title: email+' '+lat,
+			  scope: $scope,
+			  buttons: [
+				{ 
+				  text: 'Ok',
+				  type: 'button-assertive'
+				},
+			  ]
+			})
+	}
+	
+})
+
 .controller('WebCtrl', function($scope,$ionicLoading) {
   // slider images
   	$scope.showwebsitelink = function(url){
@@ -45,7 +71,7 @@ angular.module('starter.controllers', [])
 	}
 })
 
-.controller('ScheduleCtrl', function($scope,$ionicLoading) {
+.controller('ScheduleCtrl', function($scope,$ionicPopup) {
   	var data = [{"id":"1","name": "The Trolley Depot [Park and Ride]"},{"id":"2","name": "Mister Ps Restaurant"},{"id":"3","name": "The Ellijay Board Walk"},{"id":"4","name": "The Ellijay Train Station"},{"id":"5","name": "Southern Flare Antiques"},{"id":"6","name": "Best Western Hotel"},{"id":"7","name": "Mountain Oasis"}];
 	
 
@@ -81,31 +107,14 @@ angular.module('starter.controllers', [])
 
 .controller('CheckinCtrl', function($scope,$cordovaGeolocation,$ionicPopup) {
 	
-	var posOptions = {timeout:1000, enableHighAccuracy: false};
-   	$cordovaGeolocation.getCurrentPosition(posOptions)
-	.then(function (position) {
-		var lat  = position.coords.latitude;
-		var long = position.coords.longitude;
-		//console.log(lat + '   ' + long)
-		$ionicPopup.show({
-				  template: '',
-				  title: lat + '   ' + long,
-				  scope: $scope,
-				  buttons: [
-					{ 
-					  text: 'Ok',
-					  type: 'button-assertive'
-					},
-				  ]
-				})
-   	}, function(err) {
-      	console.log(err)
-   	});
-
-  
+	navigator.geolocation.getCurrentPosition(function (pos) {
+		 lat = pos.coords.latitude;
+		 long = pos.coords.longitude;
+	}, function (error) {
+		  alert('Unable to get location: ' + error.message);
+	});
 	
-	
-  $scope.mapCreated = function(map) {
+	$scope.mapCreated = function(map) {
 		$scope.map = map;
 	};
 	

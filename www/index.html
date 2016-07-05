@@ -9,7 +9,7 @@
     <script src="js/ng-cordova.min.js"></script>
     <script src="cordova.js"></script>
     <script src="js/angular-ios9-uiwebview.patch.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB16sGmIekuGIvYOfNoW9T44377IU2d2Es&sensor=true"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB16sGmIekuGIvYOfNoW9T44377IU2d2Es"></script>
     <link href="css/style.css" rel="stylesheet">
   </head>
 <body class="platform-ios" ng-controller="MainCtrl">
@@ -79,15 +79,15 @@ aseTickets')" class="item itemsidemenu item-icon-left" menu-close>TICKETING WEBS
 	</p>
 	<div class="list list-inset">
 	  <label class="item item-input">
-		<input type="text" placeholder="Enter Email">
+		<input type="text" placeholder="Enter Email" ng-model="user.email">
 	  </label>
 	  <label class="item item-input">
-		<input type="text" placeholder="Enter Password">
+		<input type="text" placeholder="Enter Password" ng-model="user.password">
 	  </label>
 	</div>
     
     <div class="padding text-center">
-      <button class="button button-block login-button" ng-click="signIn(user)">
+      <button class="button button-block login-button" ng-click="login(user)">
         Login
       </button>
 

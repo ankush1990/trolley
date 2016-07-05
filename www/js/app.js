@@ -32,7 +32,8 @@ angular.module('ionicApp', ['ionic','ionic.rating','ngCordova','ngIOS9UIWebViewP
       url: "/driver",
       views: {
         'menuContent' :{
-          templateUrl: "templates/driver.html"
+          templateUrl: "templates/driver.html",
+		  controller: "driverCtrl"
         }
       }
     })
@@ -66,6 +67,7 @@ angular.module('ionicApp', ['ionic','ionic.rating','ngCordova','ngIOS9UIWebViewP
 		},
 		link: function ($scope, $element, $attr) {
 		  function initialize() {
+			  
 			var myLatLng = {lat: 27.9769145, lng: -82.5590481};
 			var mapOptions = {
 			  center: new google.maps.LatLng(27.9769145, -82.5590481),
