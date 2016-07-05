@@ -79,7 +79,32 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('CheckinCtrl', function($scope) {
+.controller('CheckinCtrl', function($scope,$cordovaGeolocation,$ionicPopup) {
+	
+	var posOptions = {timeout:1000, enableHighAccuracy: false};
+   	$cordovaGeolocation.getCurrentPosition(posOptions)
+	.then(function (position) {
+		var lat  = position.coords.latitude;
+		var long = position.coords.longitude;
+		//console.log(lat + '   ' + long)
+		$ionicPopup.show({
+				  template: '',
+				  title: lat + '   ' + long,
+				  scope: $scope,
+				  buttons: [
+					{ 
+					  text: 'Ok',
+					  type: 'button-assertive'
+					},
+				  ]
+				})
+   	}, function(err) {
+      	console.log(err)
+   	});
+
+  
+	
+	
   $scope.mapCreated = function(map) {
 		$scope.map = map;
 	};
