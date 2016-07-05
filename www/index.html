@@ -99,15 +99,29 @@ aseTickets')" class="item itemsidemenu item-icon-left" menu-close>TICKETING WEBS
 <script id="templates/schedule.html" type="text/ng-template">
   <ion-view view-title="SCHEDULE">
 	<ion-content>
-	 
-      <ion-item  class="itemlist" ng-repeat="item in response">
-        {{item.name}}
-      </ion-item>
-    
-	</ion-content>
+	 	<ul class="itemlist">
+             <a ui-sref="eventmenu.schedulelist({id:data.id,name:data.name})"  class="item itemlist item-icon-right"  ng-repeat="data in response">
+				<li class="item-checkbox" style="padding-left:10px !important;">
+					{{data.name}}
+					<i class="icon ion-ios-arrow-right"></i>
+				</li>
+             </a>
+        </ul>
+    </ion-content>
   </ion-view>
 </script>
 
+<script id="templates/schedulelist.html" type="text/ng-template">
+	<ion-view view-title="{{title}}" padding-vertical="10px" side="right">
+		<ion-content class="has-header">
+            <div class="card">
+			  <div class="item item-text-wrap">
+				{{content}}
+			  </div>
+			</div>
+        </ion-content>
+	</ion-view>
+</script>
 
 <script src="js/app.js"></script>
 <script src="js/controller.js"></script>

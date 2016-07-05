@@ -45,6 +45,15 @@ angular.module('ionicApp', ['ionic','ionic.rating','ngCordova','ngIOS9UIWebViewP
         }
       }
     })
+	.state('eventmenu.schedulelist', {
+		url: "/schedulelist/:id?name",
+		views: {
+			'menuContent' :{
+			  templateUrl: "templates/schedulelist.html",
+			  controller: "scheduleCtrl"
+		}
+		}
+    })
 	
   $urlRouterProvider.otherwise("/event/check-in");
 })

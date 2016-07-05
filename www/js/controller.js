@@ -46,10 +46,36 @@ angular.module('starter.controllers', [])
 })
 
 .controller('ScheduleCtrl', function($scope,$ionicLoading) {
-  	var data = [{"name": "The Trolley Depot [Park and Ride]"},{"name": "Mister Ps Restaurant"},{"name": "The Ellijay Board Walk"},{"name": "The Ellijay Train Station"},{"name": "Southern Flare Antiques"},{"name": "Best Western Hotel"}];
+  	var data = [{"id":"1","name": "The Trolley Depot [Park and Ride]"},{"id":"2","name": "Mister Ps Restaurant"},{"id":"3","name": "The Ellijay Board Walk"},{"id":"4","name": "The Ellijay Train Station"},{"id":"5","name": "Southern Flare Antiques"},{"id":"6","name": "Best Western Hotel"},{"id":"7","name": "Mountain Oasis"}];
 	
 
   	$scope.response = data;
+})
+
+
+.controller('scheduleCtrl', function($scope,$stateParams,$rootScope) {
+	$scope.title = $stateParams.name;
+	if($stateParams.id == "1"){
+		$scope.content = "The home of the Trolleys! Buy your tickets here as well as tshirts, trolley toys, and other cool craft items at Nancyfangles Gallery Gift Shop. The depot is also a Venue for Birthday Parties, Wedding events including showers, and receptions. Park and ride the Ellijay Trolley from here! 11:00am, Noon, 1pm, 2pm Last pickup. 5pm, 6pm Last Pickup";
+	}
+	if($stateParams.id == "2"){
+		$scope.content = "The best burgers and fries in Ellijay! Hop on, have lunch, we'll pick you up... 11:08am, 12:08pm, 1:08pm, 2:08pm Last pickup. 5:08pm, 6:08pm Last pickup";
+	}
+	if($stateParams.id == "3"){
+		$scope.content = "Central to Ellijay Shopping and restaurants, the Ellijay Boardwalk is a great place to hop on or hop off. Don't worry, we'll swing back around and pick you up! 11:15am, 12:15pm, 1:15pm, 2:15pm Last pickup. 5:15 pm, 6:15pm Last pickup ";
+	}
+	if($stateParams.id == "4"){
+		$scope.content = "11:25am, 12:25pm, 1:25pm, 2:25pm Last pickup. 5:25pm, 6:25pm Last pickup. ";
+	}
+	if($stateParams.id == "5"){
+		$scope.content = "One of Ellijay's most exclusive antique stores. Jump out and look around. We've got room to carry what you buy! 11:30am, 12:30pm, 1:30pm, 2:30pm Last pickup. 5:30pm, 6:30pm Last pickup. ";
+	}
+	if($stateParams.id == "6"){
+		$scope.content = "The best view in Ellijay comes from The Best Western Hotel. Also one of our Vineyard tour partners! 11:38am, 12:38pm, 1:38pm, 2:38pm Last pickup. 5:38pm, 6:38pm Last pickup. ";
+	}
+	if($stateParams.id == "7"){
+		$scope.content = "11:48am, 12:48pm, 1:48pm, 2:48pm Last pickup.";
+	}
 })
 
 
