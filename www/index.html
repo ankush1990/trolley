@@ -1,106 +1,115 @@
-<!DOCTYPE html>
-<html>
+<html ng-app="ionicApp">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title></title>
-
-
-    <!-- compiled css output -->
-    <link href="css/ionic.app.css" rel="stylesheet">
-
-    <!-- ionic/angularjs js -->
-    <script src="lib/ionic/js/ionic.bundle.js"></script>
-    <!-- cordova script (this will be a 404 during development) -->
+    <meta name="viewport"  content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+	<title>Side Menus</title>
+    <link href="lib/ionic/css/ionic.min.css" rel="stylesheet">
+	<script src="js/jquery-2.1.1.min.js"></script>
+    <script src="lib/ionic/js/ionic.bundle.min.js"></script>
     <script src="js/ng-cordova.min.js"></script>
     <script src="cordova.js"></script>
     <script src="js/angular-ios9-uiwebview.patch.js"></script>
-
-    <!-- your app's js -->
-    <script src="js/app.js"></script>
-    <script src="js/controllers.js"></script>
-    <script src="js/services.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB16sGmIekuGIvYOfNoW9T44377IU2d2Es"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB16sGmIekuGIvYOfNoW9T44377IU2d2Es&sensor=true"></script>
+    <link href="css/style.css" rel="stylesheet">
   </head>
-  <body ng-app="starter" class="platform-android platform-cordova platform-webview">
- <ion-side-menus>
+<body class="platform-ios" ng-controller="MainCtrl">
+<ion-nav-view></ion-nav-view>
+<script id="templates/event-menu.html" type="text/ng-template">
+  <ion-side-menus enable-menu-with-back-views="false">
+	<ion-side-menu-content>
+	  <ion-nav-bar class="header-bar">
+		<ion-nav-back-button>
+		</ion-nav-back-button>
 
-    <!-- Center content -->
-    <ion-side-menu-content>
-      <ion-nav-bar class="bar-dark" align-title="center">
-        <!-- Back button -->
-        <ion-nav-back-button>
-          Back
-        </ion-nav-back-button>
+		<ion-nav-buttons side="left">
+		  <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+		  </button>
+		</ion-nav-buttons>
+	  </ion-nav-bar>
 
-        <!-- Burger button -->
-        <ion-nav-buttons side="left">
-          <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
-          </button>
-        </ion-nav-buttons>
+	  <ion-nav-view name="menuContent"></ion-nav-view>
+	</ion-side-menu-content> 
 
-        <!-- Cart button -->
-       	<ion-nav-buttons side="right">
-          	<ngcart-summary></ngcart-summary>
-        </ion-nav-buttons>
-      </ion-nav-bar>
-
-      <!-- Main view content -->
-      <ion-nav-view animation="slide-left-right"></ion-nav-view>
-    </ion-side-menu-content>
-
-    <!-- Left menu -->
-    <ion-side-menu side="left" class="dark-bg">
-      <ion-header-bar class="bar-positive">
-         <div class="text-center" style="width:260px !important;">
-        <img src="img/logo.png" height="75px" width="150px;" style="margin-bottom:20px;"><br>
-        706-972-1884<br>
-        www.EllijayTrolley.com
-        </div>
-      </ion-header-bar>
-
-      <ion-content>
-
-        <!-- Search input on head of side menu -->
-        <!--<ion-header-bar class="bar bar-dark item-input-inset dark-bg">
-          <label class="item-input-wrapper">
-            <i class="icon ion-ios-search placeholder-icon"></i>
-            <input type="search" placeholder="Search">
-          </label>
-        </ion-header-bar>-->
-
-        <!-- Menu -->
-        <div class="list dark-list stable" menu-close="">
-         
-          <div class="item" ui-sref="schedule">
-              SCHEDULE
-          </div>
-          <div class="item" ui-sref="login">
-              DRIVER SIGNIN
-          </div>
-          <div class="item" ng-controller="WebCtrl" ng-click="showwebsitelink('http://www.ellijaytrolley.com/Purch
-aseTickets')">
-              TICKETING WEBSITE
-          </div>
-          <div class="item" ng-controller="WebCtrl" ng-click="showwebsitelink('http://static1.squarespace.com/static/56990ed9fb36b1a2d2c68757/t/575a3b458259b54fad3324b9/1465531234837/TrolleyDepot-Stops-Flyer-Final.pdf')">
-              BROCHURE
-          </div>
-          
-          <div class="item" ng-controller="WebCtrl" ng-click="showwebsitelink('http://www.ellijaytrolley.com/vineyardtours')">
-            VINEYARD TOURS
-          </div>
-          
-          <div class="item" ng-controller="WebCtrl" ng-click="showwebsitelink('http://www.ellijaytrolley.com/contact/')">
-            CONTACT US
-          </div>
-        </div>
-
-      </ion-content>
-
-    </ion-side-menu>
+	<ion-side-menu side="left">
+	  
+	  <ion-content class="listsidemenu">
+		<ul class="list">
+		 <div class="text-center padding" style="width:100% !important; background-color: #74712C !important">
+		  	<img src="images/logo.png" height="75px" width="150px;" style="margin-bottom:20px;"><br>
+        	706-972-1884<br>
+        	www.EllijayTrolley.com
+		</div>
+		  <!-- Note each link has the 'menu-close' attribute so the menu auto closes when clicking on one of these links -->
+		  <a href="#/event/schedule" class="item itemsidemenu item-icon-left" menu-close>SCHEDULE</a>
+		  <a href="#/event/driver" class="item itemsidemenu item-icon-left" menu-close>DRIVER SIGNIN</a>
+		  <a ng-controller="WebCtrl" ng-click="showwebsitelink('http://www.ellijaytrolley.com/Purch
+aseTickets')" class="item itemsidemenu item-icon-left" menu-close>TICKETING WEBSITE</a>
+		  <a ng-controller="WebCtrl" ng-click="showwebsitelink('http://static1.squarespace.com/static/56990ed9fb36b1a2d2c68757/t/575a3b458259b54fad3324b9/1465531234837/TrolleyDepot-Stops-Flyer-Final.pdf')" class="item itemsidemenu item-icon-left" menu-close>BROCHURE</a>
+		  <a ng-controller="WebCtrl" ng-click="showwebsitelink('http://www.ellijaytrolley.com/vineyardtours')" class="item item-icon-left itemsidemenu" menu-close>VINEYARD TOURS</a>
+		  <a  ng-controller="WebCtrl" ng-click="showwebsitelink('http://www.ellijaytrolley.com/contact/')" class="item item-icon-left itemsidemenu" menu-close>CONTACT US</a>
+		</ul>
+	  </ion-content>
+	</ion-side-menu>
 
   </ion-side-menus>
+</script>
 
-  </body>
-  
+<script id="templates/home.html" type="text/ng-template">
+  <ion-view view-title="Welcome">
+	<ion-content class="padding">
+	  <p>Swipe to the right to reveal the left menu.</p>
+	  <p>(On desktop click and drag from left to right)</p>
+	</ion-content>
+  </ion-view>
+</script>
+
+<script id="templates/check-in.html" type="text/ng-template">
+  <ion-view view-title="Home">
+	<ion-content>
+	  <map on-create="mapCreated(map)" style="height:100%"></map>
+	</ion-content>
+  </ion-view>
+</script>
+
+<script id="templates/driver.html" type="text/ng-template">
+  <ion-view view-title="DRIVER SIGNIN">
+	<ion-content>
+	  <p class="text-center" style="margin-top:60px;">
+	  	<h2 class="text-center">Driver Sign</h2>
+	</p>
+	<div class="list list-inset">
+	  <label class="item item-input">
+		<input type="text" placeholder="Enter Email">
+	  </label>
+	  <label class="item item-input">
+		<input type="text" placeholder="Enter Password">
+	  </label>
+	</div>
+    
+    <div class="padding text-center">
+      <button class="button button-block login-button" ng-click="signIn(user)">
+        Login
+      </button>
+
+    </div>
+	</ion-content>
+  </ion-view>
+</script>
+
+<script id="templates/schedule.html" type="text/ng-template">
+  <ion-view view-title="SCHEDULE">
+	<ion-content>
+	 
+      <ion-item  class="itemlist" ng-repeat="item in response">
+        {{item.name}}
+      </ion-item>
+    
+	</ion-content>
+  </ion-view>
+</script>
+
+
+<script src="js/app.js"></script>
+<script src="js/controller.js"></script>
+</body>
 </html>

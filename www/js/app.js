@@ -1,56 +1,52 @@
-// Ionic Starter App
-
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'starter.services' is found in services.js
-// 'starter.controllers' is found in controllers.js
-
-var globalurl = "http://pohaindorinamkeen.com/webservice";
-angular.module('starter', ['ionic', 'starter.controllers','ngIOS9UIWebViewPatch','ngCordova','starter.services'])
-
-
-
+// JavaScript Document
+//var globalip = "www.truhome.co/phonegapservices";
+var globalip = "45.79.145.23/truhome.co/public_html/phonegapservices";
+var token = "";
+angular.module('ionicApp', ['ionic','ionic.rating','ngCordova','ngIOS9UIWebViewPatch','starter.controllers'])
 .config(function($stateProvider, $urlRouterProvider) {
 
-  // Ionic uses AngularUI Router which uses the concept of states
-  // Learn more here: https://github.com/angular-ui/ui-router
-  // Set up the various states which the app can be in.
-  // Each state's controller can be found in controllers.js
   $stateProvider
+    .state('eventmenu', {
+      url: "/event",
+      abstract: true,
+      templateUrl: "templates/event-menu.html"
+    })
+    .state('eventmenu.home', {
+      url: "/home",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/home.html"
+        }
+      }
+    })
+    .state('eventmenu.checkin', {
+      url: "/check-in",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/check-in.html",
+          controller: "CheckinCtrl"
+        }
+      }
+    })
+	.state('eventmenu.driver', {
+      url: "/driver",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/driver.html"
+        }
+      }
+    })
+	.state('eventmenu.schedule', {
+      url: "/schedule",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/schedule.html",
+		  controller: "ScheduleCtrl"
+        }
+      }
+    })
 	
-  // Home screen
-  .state('home', {
-    url: '/home',
-    templateUrl: 'templates/home.html',
-    controller: 'HomeCtrl'
-  })
-
-   // about screen
-  .state('about', {
-    url: '/about',
-    templateUrl: 'templates/about.html'
-  })
-  
-  // about screen
-  .state('schedule', {
-    url: '/schedule',
-    templateUrl: 'templates/schedule.html',
-	controller: 'ScheduleCtrl'
-  })
-
-	// login screen
-  .state('login', {
-    url: '/login',
-    templateUrl: 'templates/login.html',
-    controller: 'AuthCtrl'
-  })
-  
-  
-
- // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/home');
-
+  $urlRouterProvider.otherwise("/event/check-in");
 })
 
 .directive('map', function() {
@@ -96,6 +92,4 @@ angular.module('starter', ['ionic', 'starter.controllers','ngIOS9UIWebViewPatch'
 		}
   	}
 })
-
-
 

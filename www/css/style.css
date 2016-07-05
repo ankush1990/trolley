@@ -1,1 +1,69 @@
-/* Empty. Add your own CSS if you like */
+@charset "utf-8";
+/* CSS Document */
+
+/* body background color */
+.backcolor{background-color:#F8F8F8}
+
+/* ancher config */
+a{text-decoration: none; display:block; width:100%; color:#000;}
+
+.pane, .view {
+    background-color: #FAF6E0 !important; 
+}
+
+.itemlist {
+    background-color: transparent !important;
+}
+
+.itemsidemenu {
+	background-color: transparent !important;
+   	border-style:none;
+	padding:5px 5px 5px 45px;
+}
+
+.list {
+    background-color: #292933 !important;
+	color:#FFF !important;
+}
+
+.listsidemenu {
+    background-color: #292933 !important;
+}
+
+
+
+/* header background color */
+.header-bar{background-color:#74712C; color:#FFF;}
+
+.sidemenu-bar{background-color:#74712C; color:#FFF;}
+
+/* footer background color */
+.footer-bar{background-color:#1D4461; color:#FFF;}
+
+
+
+/* button color for login */
+.login-button{background-color:#74712C; color:#FFF;}
+.login-button:hover{background-color:#74712C; color:#FFF;}
+
+/* back button color */
+.button-clear.button-clear {color:#FFF;}
+.back-button{ color:#FFF;}
+.back-button:hover{ color:#FFF;}
+
+/* Ionic popup title for text */
+.popup-body {text-align:left; float:left}
+.popup-head{text-align:center; }
+
+
+
+map {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.scroll {
+  height: 100%;
+}
+
+
